@@ -3,6 +3,7 @@ class UserModel {
   String? firstName;
   String? lastName;
   String? phoneNo;
+  String? address;
   String? province;
   int? provinceId;
   String? idCardNo;
@@ -12,6 +13,7 @@ class UserModel {
       this.firstName,
       this.lastName,
       this.phoneNo,
+      this.address,
       this.province,
       this.provinceId,
       this.idCardNo});
@@ -21,6 +23,7 @@ class UserModel {
     firstName = json['first_name'];
     lastName = json['last_name'];
     phoneNo = json['phoneNo'];
+    address = json['address'];
     province = json['province'];
     provinceId = json['province_id'];
     idCardNo = json['id_card_no'];
@@ -32,6 +35,7 @@ class UserModel {
     data['first_name'] = this.firstName;
     data['last_name'] = this.lastName;
     data['phoneNo'] = this.phoneNo;
+    data['address'] = this.address;
     data['province'] = this.province;
     data['province_id'] = this.provinceId;
     data['id_card_no'] = this.idCardNo;

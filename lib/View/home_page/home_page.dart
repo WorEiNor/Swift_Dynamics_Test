@@ -1,4 +1,5 @@
 import 'package:employee_view/Controller/user_controller.dart';
+import 'package:employee_view/Model/province_model/province_model.dart';
 
 import 'package:employee_view/View/home_page/widgets/add_contact_card.dart';
 import 'package:employee_view/View/home_page/widgets/contact_card.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final userController = UserController();
-  int provinceId = 0;
+  ProvinceModel? province;
   // List<UserModel>? users = usersList;
   // void fetchUsers() async {
   //   final data = await userController.getUserList();
@@ -102,30 +103,45 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(height: 16),
-                    GestureDetector(
-                      onTap: () => ProvinceSearchSelectorBottomSheet.show(
-                          context: context,
-                          onSelected: (province) {
-                            provinceId = province.id!;
-                            setState(() {});
-                          }),
-                      child: Container(
-                        child: Text('Select Province'),
-                        padding: EdgeInsets.all(8),
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 16),
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(8),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        CupertinoButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () =>
+                              ProvinceSearchSelectorBottomSheet.show(
+                                  context: context,
+                                  onSelected: (selectedProvince) {
+                                    province = selectedProvince;
+                                    setState(() {});
+                                  }),
+                          child: Container(
+                            child: Text(
+                              'Select Province',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
                         ),
-                      ),
+                        Container(width: 32),
+                        Text(
+                          province?.nameTh ?? '',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
                     ),
+                    Container(height: 16),
                     AddContactCard(
                       onSuccess: () {
                         setState(() {});
                       },
                     ),
                     Container(height: 16),
-                    _buildContent(provinceId),
+                    _buildContent(province?.id),
                   ],
                 ),
               ),

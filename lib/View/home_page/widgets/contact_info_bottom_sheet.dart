@@ -2,6 +2,7 @@ import 'package:employee_view/Model/user_model/user_model.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ContactInfoBottomSheet extends StatelessWidget {
   const ContactInfoBottomSheet({super.key, required this.user});
@@ -26,7 +27,7 @@ class ContactInfoBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
-      padding: EdgeInsets.fromLTRB(16, 32, 16, 16),
+      padding: EdgeInsets.fromLTRB(16, 48, 16, 16),
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           color: Colors.white),
@@ -38,29 +39,102 @@ class ContactInfoBottomSheet extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Firstname : ${user.firstName}',
-                style: TextStyle(fontSize: 16),
+              Align(
+                alignment: Alignment.center,
+                child: FaIcon(
+                  FontAwesomeIcons.circleUser,
+                  size: 150,
+                ),
+              ),
+              Container(height: 32),
+              RichText(
+                text: TextSpan(
+                  text: 'Firstname: ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: '${user.firstName}',
+                        style: TextStyle(fontSize: 16)),
+                  ],
+                ),
               ),
               Container(height: 8),
-              Text(
-                'Lastname : ${user.lastName}',
-                style: TextStyle(fontSize: 16),
+              RichText(
+                text: TextSpan(
+                  text: 'Lastname: ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: '${user.lastName}',
+                        style: TextStyle(fontSize: 16)),
+                  ],
+                ),
               ),
               Container(height: 8),
-              Text(
-                'Phone Number : ${user.phoneNo}',
-                style: TextStyle(fontSize: 16),
+              RichText(
+                text: TextSpan(
+                  text: 'Phone Number: ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: '${user.phoneNo}',
+                        style: TextStyle(fontSize: 16)),
+                  ],
+                ),
               ),
               Container(height: 8),
-              Text(
-                'Id Card Number : ${user.phoneNo}',
-                style: TextStyle(fontSize: 16),
+              RichText(
+                text: TextSpan(
+                  text: 'Id Card Number: ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: '${user.idCardNo}',
+                        style: TextStyle(fontSize: 16)),
+                  ],
+                ),
               ),
               Container(height: 8),
-              Text(
-                'Province : ${user.province}',
-                style: TextStyle(fontSize: 16),
+              RichText(
+                text: TextSpan(
+                  text: 'Address: ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: '${user.address}',
+                        style: TextStyle(fontSize: 16)),
+                  ],
+                ),
+              ),
+              Container(height: 8),
+              RichText(
+                text: TextSpan(
+                  text: 'Province: ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: '${user.province}',
+                        style: TextStyle(fontSize: 16)),
+                  ],
+                ),
               ),
               Container(height: 8),
             ],

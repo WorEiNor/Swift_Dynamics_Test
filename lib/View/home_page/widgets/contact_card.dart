@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'contact_info_bottom_sheet.dart';
+import 'loading_dialog.dart';
 
 class ContactCard extends StatefulWidget {
   const ContactCard({super.key, required this.user, required this.onDelete});
@@ -77,10 +78,12 @@ class _ContactCardState extends State<ContactCard> {
                       ),
                       TextButton(
                         onPressed: () async {
+                          LoadingDialog.show(context);
                           await UserController()
                               .deleteUser(widget.user.id!)
                               .then((value) {
                             widget.onDelete();
+                            LoadingDialog.close(context);
                             Navigator.pop(context);
                           });
                         },

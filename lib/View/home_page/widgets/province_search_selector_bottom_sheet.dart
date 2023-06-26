@@ -27,6 +27,10 @@ class ProvinceSearchSelectorBottomSheet extends StatefulWidget {
     );
   }
 
+  static void close(BuildContext context) {
+    Navigator.of(context).pop();
+  }
+
   @override
   State<ProvinceSearchSelectorBottomSheet> createState() =>
       _ProvinceSearchSelectorBottomSheetState();
@@ -76,7 +80,7 @@ class _ProvinceSearchSelectorBottomSheetState
       itemBuilder: (_, index) => CupertinoButton(
         onPressed: () {
           widget.onSelected(list[index]);
-          Navigator.of(context).pop();
+          ProvinceSearchSelectorBottomSheet.close(context);
         },
         padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: Container(
@@ -135,7 +139,7 @@ class _ProvinceSearchSelectorBottomSheetState
                       size: 20,
                     ),
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      ProvinceSearchSelectorBottomSheet.close(context);
                     },
                   ),
                 ],
@@ -154,11 +158,9 @@ class _ProvinceSearchSelectorBottomSheetState
             Expanded(
               child: Scrollbar(
                 controller: scrollController,
-                child: Center(
-                  child: SingleChildScrollView(
-                    controller: scrollController,
-                    child: _buildContent(),
-                  ),
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: _buildContent(),
                 ),
               ),
             ),
